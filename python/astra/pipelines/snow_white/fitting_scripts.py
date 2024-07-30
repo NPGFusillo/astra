@@ -206,15 +206,15 @@ def line_func_rv(params,_sn, _l,emu,wref):
         lines_s.append(l_s)       
         flux_s.append(l_s[:,1])
         err_s.append(l_s[:,2])
-        #chi_line.append(np.sum(((l_s[:,1]-l_m)/l_s[:,2])**2))#/np.size(l_m))
+        chi_line.append(np.sum(((l_s[:,1]-l_m)/l_s[:,2])**2))#/np.size(l_m))
     all_lines_m=np.concatenate((lines_m),axis=0)
     all_lines_s=np.concatenate((flux_s),axis=0)
     all_err_s=np.concatenate((err_s),axis=0)
-    #sum_l_chi2=np.array(((all_lines_s-all_lines_m)/all_err_s)**2)
-    #chi_line=np.array(chi_line)
-    #chi_line_s=np.sort(chi_line)
-    #chi_line_m = chi_line_s[:-1]
-    #chi_sum=np.mean(chi_line)
+    sum_l_chi2=np.array(((all_lines_s-all_lines_m)/all_err_s)**2)
+    chi_line=np.array(chi_line)
+    chi_line_s=np.sort(chi_line)
+    chi_line_m = chi_line_s[:-1]
+    chi_sum=np.mean(chi_line)
     chi=np.array((all_lines_s-all_lines_m)/all_err_s)
     return(sum_l_chi2)
 

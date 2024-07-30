@@ -151,7 +151,7 @@ def snow_white(
                     elif first_T>40000:
                         line_crop = np.loadtxt(os.path.join(PIPELINE_DATA_DIR, 'line_crop_hot.dat'),max_rows=6)
                     l_crop = line_crop[(line_crop[:,0]>spec_w.min()) & (line_crop[:,1]<spec_w.max())]
-                    new_best= lmfit.minimize(fitting_scripts_v2.line_func_rv,fit_params,args=(spec_nl,l_crop,emu,wref))
+                    new_best= lmfit.minimize(fitting_scripts.line_func_rv,fit_params,args=(spec_nl,l_crop,emu,wref))
 
 
                 best_T=new_best.params['teff'].value
@@ -194,7 +194,7 @@ def snow_white(
                     l_crop = line_crop[(line_crop[:,0]>spec_w.min()) & (line_crop[:,1]<spec_w.max())]
                 
                 #====================find second solution ==============================================
-                    second_best= lmfit.minimize(fitting_scripts_v2.line_func_rv,fit_params,args=(spec_nl,l_crop,emu,wref),method="leastsq")
+                    second_best= lmfit.minimize(fitting_scripts.line_func_rv,fit_params,args=(spec_nl,l_crop,emu,wref),method="leastsq")
                     best_T2=second_best.params['teff'].value
                     best_Te2=second_best.params['teff'].stderr
                     best_g2=second_best.params['logg'].value
